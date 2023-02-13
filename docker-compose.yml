@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+   node-app:
+        image: node-app
+        container_name: node-app
+        build: ./
+        ports:
+            - 8080:8080
+            - 3000:3000
+        restart: on-failure
+        command: npm run dev
+        volumes:
+            - srcs:/usr/src/app
+            - /usr/src/app/node_modules
+              #        working_dir: /usr/src/app
+        tty: true
+
+volumes:
+    srcs:
+        driver: local
+        driver_opts:
+            type: none
+            o: bind
+            device: "${HOME}/Documents/cs/srcs"
