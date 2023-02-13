@@ -2,11 +2,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Head from 'next/head'
 import Layout from "../components/layout/Layout";
 import { useEffect } from "react";
+import { ChakraProvider,extendTheme } from '@chakra-ui/react'
+import theme from "../styles/theme.js"
 
 function App({ Component, pageProps }) {
-	useEffect(() => {
-		require("bootstrap/dist/js/bootstrap.bundle.min.js");
-	}, []);
 
 	return (
 	<div>
@@ -17,9 +16,9 @@ function App({ Component, pageProps }) {
 			content="initial-scale=1.0, width=device-width"
 		/>
 	</Head>
-		<Layout>
+		<ChakraProvider resetCSS theme={theme}>
 			<Component {...pageProps} />
-		</Layout>
+		</ChakraProvider>
 	</div>
 	);
 }
