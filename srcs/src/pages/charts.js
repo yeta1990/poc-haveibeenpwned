@@ -4,13 +4,14 @@ import { getBreached } from "./api/breachedsites.js"
 import { GetServerSideProps } from 'next'
 import { getBreachedSites } from '@/services/breachedSites.services'
 import { useState, useEffect } from 'react'
-
-export default function ChartHome( { data } ) {
+import { ChartHome } from '@/components/ChartHome'
+export default function Charts( { data } ) {
 
 	return (
 		<div>
 			{data[0].Name}
 			Charts
+			<ChartHome />
 		</div>
 	)
 }

@@ -1,4 +1,3 @@
-
 import axios from "axios"
 import { useState, useEffect } from 'react'
 import { toSha } from '@/utils/cryptoUtils.js'
@@ -22,8 +21,6 @@ export default function Form() {
 	const [login, setLogin] = useState(true);
 
 	const handleSubmission = async (e) => {
-
-
 		e.preventDefault();
 
 		if (email === '' || !hasEmailValidFormat(email))
