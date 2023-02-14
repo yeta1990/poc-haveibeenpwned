@@ -1,4 +1,3 @@
-import "bootstrap/dist/css/bootstrap.min.css";
 import Head from 'next/head'
 import Layout from "../components/layout/Layout";
 import { useEffect } from "react";
