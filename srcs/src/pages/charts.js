@@ -1,17 +1,12 @@
-
-import axios from "axios"
 import { getBreached } from "./api/breachedsites.js"
-import { GetServerSideProps } from 'next'
-import { getBreachedSites } from '@/services/breachedSites.services'
-import { useState, useEffect } from 'react'
-import { ChartHome } from '@/components/ChartHome'
-export default function Charts( { data } ) {
+import { generateDataForLineChart } from "@/services/charts.services.js"
+import { BreachedSitesLines } from '@/components/BreachedSitesLines'
+
+export default function Charts( { breachedDataSet } ) {
 
 	return (
 		<div>
-			{data[0].Name}
-			Charts
-			<ChartHome />
+			<BreachedSitesLines dataset={breachedDataSet} />
 		</div>
 	)
 }
@@ -19,7 +14,8 @@ export default function Charts( { data } ) {
 
 export async function getServerSideProps() {
 	const data = await getBreached()
-	return { props: { data } }
+	const breachedDataSet = await generateDataForLineChart(data, "branchyear", "# of breached sites by year")
+	return { props: { breachedDataSet } }
 }
 
 
