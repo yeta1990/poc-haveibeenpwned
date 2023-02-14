@@ -1,39 +1,25 @@
-
 import axios from "axios"
-
-
-function BreachedSite(Name, BreachDate, PwnCount)
-{
-	this.name = Name
-	this.breachdate = BreachedDate
-	this.pwncount = PwnCount
-}
-
-
-export async function breachedApiCall(){
-	const breachedSites = await axios
-		.get(`/api/breachedsites`)
-		.then((r) => r.data)
-		.catch((err) => console.log(err));
-	return exposedHashes;
-}
+import { getBreached } from "../pages/api/breachedsites.js"
 
 export const parseBreachedJson = async() => {
 
-	const breachedJson = JSON.parse(await breachedApiCall())
+	const breachedJson = await getBreached()
 	let breachedReduced = []
 	let breachedSite;
-	for (i = 0; i < 10; i++)
+	for (let i = 0; i < 10; i++)
 	{
-//		breachedSite = new BreachedSite(breachedJson[i].name, breachedJson[i].breacheddate, breachedJson[i].pwncount)
-//		breachedReduced.add (breachedSite)
-		console.log(breachedJson[i])
+		breachedReduced.push ( { 
+			name : breachedJson[i].Name, 
+			breachdate: breachedJson[i].BreachDate, 
+			pwncount: breachedJson[i].PwnCount
+		} )
 	}
 	return breachedReduced
 }
 
-export async function getBreachedSites() => {
+export const getBreachedSites = async() => {
 
-	const breachedSites = await parseBreachedJson;
+	const breachedSites = await parseBreachedJson()
+	return (breachedSites)
 
 }

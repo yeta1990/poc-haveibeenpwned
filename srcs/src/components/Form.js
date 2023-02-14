@@ -7,8 +7,10 @@ import { ChartHome } from '@/components/ChartHome.js'
 import { Input, Button, InputGroup, Flex, Box, Heading, FormLabel , InputRightElement, Icon, Alert, AlertIcon, FormControl, useBoolean, FormErrorMessage } from '@chakra-ui/react'
 import { ViewIcon } from '@chakra-ui/icons'
 import { hasEmailValidFormat } from '../utils/stringUtils'
+import {useRouter} from 'next/router'
 
 export default function Form() {
+	const router = useRouter()
 	const [email, setEmail] = useState('');
 	const [pass, setPass] = useState('');
 	const [submission, setSubmission] = useState(false);
@@ -16,9 +18,12 @@ export default function Form() {
 	const [showPass, setShowPass] = useBoolean();
 	const [emailError, setEmailError] = useState(false);
 	const [passError, setPassError] = useState(false);
-	const [login, setLogin] = useState(false);
+		//change login to false!!!!!
+	const [login, setLogin] = useState(true);
 
 	const handleSubmission = async (e) => {
+
+
 		e.preventDefault();
 
 		if (email === '' || !hasEmailValidFormat(email))
@@ -49,7 +54,8 @@ export default function Form() {
 		
 		if (!emailError && !passError && submission)
 		{
-			setLogin(true)
+			router.push('/charts')
+//			setLogin(true)
 		}
 		() => {setSubmission(false)}
 		
@@ -66,7 +72,6 @@ export default function Form() {
 
 	return (
 		<div>
-		{login && (<div>asdfasfas</div>)}
 		<Flex width="full" align="center" justifyContent="center">
 		<Box
         	p={8}
@@ -140,6 +145,5 @@ export default function Form() {
 		</Box>
 		</Flex>
 		</div>
-
-	)
+	)	
 }
