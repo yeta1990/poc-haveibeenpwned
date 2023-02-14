@@ -3,6 +3,7 @@ import axios from "axios"
 import { useState, useEffect } from 'react'
 import { toSha } from '@/utils/cryptoUtils.js'
 import { checkExposedPassword} from '@/services/signupForm.services'
+import { ChartHome } from '@/components/ChartHome.js'
 import { Input, Button, InputGroup, Flex, Box, Heading, FormLabel , InputRightElement, Icon, Alert, AlertIcon, FormControl, useBoolean, FormErrorMessage } from '@chakra-ui/react'
 import { ViewIcon } from '@chakra-ui/icons'
 import { hasEmailValidFormat } from '../utils/stringUtils'
@@ -15,41 +16,57 @@ export default function Form() {
 	const [showPass, setShowPass] = useBoolean();
 	const [emailError, setEmailError] = useState(false);
 	const [passError, setPassError] = useState(false);
+	const [login, setLogin] = useState(false);
 
-	const handleSubmission = (e) => {
-		e.preventDefault()
-		email === '' && setEmailError(true)
-		!hasEmailValidFormat(email) && setEmailError(true)
-		pass === '' && setPassError(true)
+	const handleSubmission = async (e) => {
+		e.preventDefault();
+
+		if (email === '' || !hasEmailValidFormat(email))
+		{	
+			setEmailError(true)
+		}
+		else
+		{
+			setEmailError(false)
+		}
+
+		const isPassExposed = await checkExposedPassword(pass);
+		setExposedPass(isPassExposed)
+		if (pass.length > 0 && !isPassExposed)
+		{
+			setPassError(false)
+		}
+		else
+		{
+			setPassError(true)
+		}
+
 		setSubmission(true)
+		
 	}
 
+	useEffect(() =>{
+		
+		if (!emailError && !passError && submission)
+		{
+			setLogin(true)
+		}
+		() => {setSubmission(false)}
+		
+	}, [emailError, passError, submission])
+	
+
 	const handleEmailChange = (e) => {
-		if (!emailError)
-			setEmailError(false)
 		setEmail(e.target.value)
 	}
 
 	const handlePassChange = (e) => {
-		if (!emailError)
-			setPassError(false)
 		setPass(e.target.value)
 	}
 
-	useEffect(() => {
-		if (submission)
-		{
-			async function getData() {
-				const a = await checkExposedPassword(pass, setExposedPass);
-				console.log(a);
-			}
-			getData()
-			setSubmission(false);
-		}
-	}, [submission])
-
 	return (
 		<div>
+		{login && (<div>asdfasfas</div>)}
 		<Flex width="full" align="center" justifyContent="center">
 		<Box
         	p={8}
@@ -64,10 +81,10 @@ export default function Form() {
             </Box>
 	        <form>
             <Box my={4} textAlign="left">
-			<FormControl isRequired isInvalid={emailError}>
+			<FormControl isInvalid={emailError}>
 	            <FormLabel>Email</FormLabel>
 	                <Input
-	                    type="email"
+	                    type="text"
 	                    placeholder="your@email.com"
 	                    size="lg"
 	                    onChange={e => handleEmailChange(e)}
@@ -79,14 +96,14 @@ export default function Form() {
 
 	        <FormLabel>Password</FormLabel>
 			<InputGroup>
-				<FormControl isRequired isInvalid={passError}>
+				<FormControl isInvalid={passError}>
 				<Input
 					type={showPass ? 'text' : 'password'}
 					placeholder="*******"
     				size="lg"
                     onChange={e => handlePassChange(e)}
                  />
-                <FormErrorMessage>This field can't be empty</FormErrorMessage>
+                <FormErrorMessage>Choose another password, please</FormErrorMessage>
             </FormControl>
 				<InputRightElement width="3rem">
 				<Button
@@ -114,15 +131,15 @@ export default function Form() {
 			<Button 
 				variantcolor="teal"
 				variant="outline"
-				type="submit"
 				width="full"
-				mt={4}
+				type="submit"
 				onClick={handleSubmission}
-
+				mt={4}
 			>Submit and login </Button>
 		</form>
 		</Box>
 		</Flex>
 		</div>
+
 	)
 }

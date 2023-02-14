@@ -10,18 +10,20 @@ export async function exposedApiCall(shortHashPass) {
 	return exposedHashes;
 }
 
-
 export const checkExposedPassword = async (pass, setExposedPass) => {
 	const hashPass = toSha(pass)
 	const hashPassPrefix = hashPass.substr(0,5).toUpperCase();
 	const hashPassSuffix = hashPass.substr(5, 35).toUpperCase();
 	const exposedHashes = await exposedApiCall(hashPassPrefix)
 	const listOfHashes = exposedHashes.split('\r\n')
-	
+	let exposedPass = false;
+
 	for (let i = 0; i < listOfHashes.length; i++)
 	{
 		if (listOfHashes[i].includes(hashPassSuffix))
-			setExposedPass(true)
+		{
+			exposedPass = true
+		}
 	}
+	return (exposedPass)
 }
-
