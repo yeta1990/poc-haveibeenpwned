@@ -1,12 +1,18 @@
 import { getBreached } from "./api/breachedsites.js"
 import { generateDataForLineChart } from "@/services/charts.services.js"
 import { BreachedSitesLines } from '@/components/BreachedSitesLines'
+import  DataTable1  from '@/components/DataTable'
+import { Box, Heading } from '@chakra-ui/react'
 
-export default function Charts( { breachedDataSet } ) {
+export default function Charts( { breachedDataSet, dataClassesDataSet} ) {
 
 	return (
 		<div>
+			<Box textAlign="center">
+				<Heading>Charts</Heading>
+			</Box>
 			<BreachedSitesLines dataset={breachedDataSet} />
+			<DataTable1 dataset={dataClassesDataSet}/>
 		</div>
 	)
 }
@@ -15,7 +21,9 @@ export default function Charts( { breachedDataSet } ) {
 export async function getServerSideProps() {
 	const data = await getBreached()
 	const breachedDataSet = await generateDataForLineChart(data, "branchyear", "# of breached sites by year")
-	return { props: { breachedDataSet } }
+	const dataCDS = await fetch(`https://haveibeenpwned.com/api/v3/dataclasses`)
+	const dataClassesDataSet = await dataCDS.json()
+	console.log(dataClassesDataSet)
+	return { props: { breachedDataSet , dataClassesDataSet} }
 }
-
 

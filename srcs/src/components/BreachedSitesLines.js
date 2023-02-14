@@ -2,14 +2,11 @@ import axios from "axios"
 import { useState, useEffect } from 'react'
 import { Chart } from 'chart.js/auto';
 import { Line } from "react-chartjs-2";
-import { Box, Heading } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 
 export function BreachedSitesLines({ dataset }) {
 	return (
 		<div>
-		<Box textAlign="center">
-			<Heading>Charts</Heading>
-		</Box>
 		<Box 
 			mt={50}
 			ml={10}
@@ -44,7 +41,7 @@ export function BreachedSitesLines({ dataset }) {
 			}}
 		/>	
 		</Box>
-			
+
 		</div>
 	)
 }
