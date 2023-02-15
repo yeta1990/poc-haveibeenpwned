@@ -1,5 +1,5 @@
 import { getBreached } from "@/services/breachedSites.services"
-import { getBreachedDataTypeTop } from "@/services/tables.services.js"
+import { getBreachedDataTypeTop } from "@/services/breachedtypes.services.js"
 import { generateDataForLineChart } from "@/services/charts.services.js"
 import { BreachedSitesLines } from '@/components/BreachedSitesLines'
 import  DataTable  from '@/components/DataTable'

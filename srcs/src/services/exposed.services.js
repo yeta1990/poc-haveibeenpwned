@@ -1,6 +1,8 @@
 import { toSha } from '@/utils/cryptoUtils.js'
 import axios from "axios"
 
+//these services parse and create a JSON formatted payload from the pwnedpasswords.com API, to serve it internally and externally in /api/exposed
+
 export async function createJsonFromExposedApiPayload(exposedHashes)
 {
 	const hashesJson = []
@@ -18,10 +20,11 @@ export async function createJsonFromExposedApiPayload(exposedHashes)
 
 export async function exposedApiCall(hashPassPrefix) {
 	const exposedHashes = await axios
-		.get(`/api/exposed?hash=${hashPassPrefix}`)
+		.get(`https://api.pwnedpasswords.com/range/${hashPassPrefix}`)
 		.then((r) => r.data)
 		.catch((err) => console.log(err));
-	return exposedHashes 
+	const exposedHashesJson = await createJsonFromExposedApiPayload(exposedHashes)
+	return exposedHashesJson
 }
 
 export const checkExposedPassword = async (pass, setExposedPass) => {
@@ -29,14 +32,13 @@ export const checkExposedPassword = async (pass, setExposedPass) => {
 	const hashPassPrefix = hashPass.substr(0,5).toUpperCase();
 	const hashPassSuffix = hashPass.substr(5, 35).toUpperCase();
 	const exposedHashes = await exposedApiCall(hashPassPrefix)
-	let exposedPass = false;
 
 	for (let i = 0; i < exposedHashes.length; i++)
 	{
 		if (exposedHashes[i].suffix.includes(hashPassSuffix))
 		{
-			exposedPass = true
+			return (exposedHashes[i].times)
 		}
 	}
-	return (exposedPass)
+	return (0)
 }

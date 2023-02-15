@@ -19,6 +19,7 @@ export default function SignupForm() {
 	const [exposedPass, setExposedPass] = useState(false);
 	const [emailError, setEmailError] = useState(false);
 	const [passError, setPassError] = useState(false);
+	const [timesExposed, setTimesExposed] = useState(0);
 
 	const handleEmailChange = (e) => {
 		setEmail(e.target.value)
@@ -41,7 +42,11 @@ export default function SignupForm() {
 		}
 
 		const isPassExposed = await checkExposedPassword(pass);
-		setExposedPass(isPassExposed)
+		if (isPassExposed > 0)
+		{
+			setExposedPass(isPassExposed)
+			setTimesExposed(isPassExposed)
+		}
 		if (pass.length > 0 && !isPassExposed)
 		{
 			setPassError(false)
@@ -81,7 +86,7 @@ export default function SignupForm() {
 			{exposedPass && (
 				<AlertBox 
 					type="warning" 
-					text="We\'ve been noticed that your password has been exposed in X places, so consider trying another one to sign up here." />
+					text={"We've been noticed that your password has been exposed " + timesExposed + " times on the internet, so consider trying another one to sign up here."} />
 			)}
 			<SubmissionButton 
 				submissionHandler={handleSubmission} 

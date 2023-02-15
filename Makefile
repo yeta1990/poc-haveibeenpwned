@@ -15,6 +15,7 @@ logs:
 	@docker-compose logs -f
 
 clean: down
+	@rm -rf srcs/node_modules && rm -rf srcs/.next
 
 fclean:	clean
 	@docker system prune -af

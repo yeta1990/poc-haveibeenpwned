@@ -9,8 +9,7 @@ services:
             - 8080:8080
             - 3000:3000
         restart: on-failure
-        command: npm run dev
-#       command: npm run bstart
+        command: npm run bstart
         volumes:
             - srcs:/usr/src/app
             - /usr/src/app/node_modules

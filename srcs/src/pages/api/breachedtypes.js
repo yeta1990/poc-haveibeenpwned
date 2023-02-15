@@ -1,5 +1,5 @@
 import axios from "axios"
-import { getBreachedDataType, getBreachedDataTypeTop } from '@/services/tables.services'
+import { getBreachedDataType, getBreachedDataTypeTop } from '@/services/breachedtypes.services'
 
 export default async function breachedtypes(req, res)
 {
