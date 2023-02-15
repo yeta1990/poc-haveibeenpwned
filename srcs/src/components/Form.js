@@ -1,7 +1,7 @@
 import axios from "axios"
 import { useState, useEffect } from 'react'
 import { toSha } from '@/utils/cryptoUtils.js'
-import { checkExposedPassword} from '@/services/signupForm.services'
+import { checkExposedPassword} from '@/services/exposed.services'
 import { Input, Button, InputGroup, Flex, Box, Heading, FormLabel , InputRightElement, Icon, Alert, AlertIcon, FormControl, useBoolean, FormErrorMessage } from '@chakra-ui/react'
 import { ViewIcon } from '@chakra-ui/icons'
 import { hasEmailValidFormat } from '../utils/stringUtils'
