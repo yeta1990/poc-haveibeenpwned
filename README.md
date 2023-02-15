@@ -1,6 +1,6 @@
 ## Tech test for fullstack/frontend position in telefonica from @albgarci
 
-Built on Next.js, with Chakra UI [Chakra UI](https://chakra-ui.com/getting-started) and Chart.js [Chart.js](https://www.chartjs.org/docs/latest/), embedded in a Docker container
+Built on [Next.js](https://nextjs.org/docs/getting-started), with [Chakra UI](https://chakra-ui.com/getting-started) and Chart.js [Chart.js](https://www.chartjs.org/docs/latest/), embedded in a Docker container
 
 
 ## Instructions:
@@ -15,11 +15,11 @@ Built on Next.js, with Chakra UI [Chakra UI](https://chakra-ui.com/getting-start
 -   Server will be ready in [http://localhost:3000](http://localhost:3000/api/breachedsites)
     
 ### Other useful commands:
--   make up: start container
--   make build: build docker image
--   make down: stop container
--   make fclean: purge all docker cache from the computer
--   make logs: print logs from the next.js server
+-   `make up`: start container
+-   `make build`: build docker image
+-   `make down`: stop container
+-   `make fclean`: purge all docker cache from the computer
+-   `make logs`: print logs from the next.js server
 
 ## Features
 
