@@ -15,10 +15,9 @@ logs:
 	@docker-compose logs -f
 
 clean: down
-	@docker system prune -af
 
 fclean:	clean
-	@docker volume rm cs_srcs
+	@docker system prune -af
 
 space:
 	@docker system df
