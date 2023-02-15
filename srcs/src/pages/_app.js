@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Layout from "../components/layout/Layout";
 import { useEffect } from "react";
 import { ChakraProvider,extendTheme } from '@chakra-ui/react'
 import theme from "../styles/theme.js"

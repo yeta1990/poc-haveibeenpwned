@@ -19,17 +19,7 @@ export default function DataTable( { dataset }) {
 				</Thead>
 				<Tbody>
 					{types}
-					<Tr>
-						<Td>Total top 10 </Td>
-						<Td>xxx</Td>
-					</Tr>
 				</Tbody>
-				<Tfoot>
-					<Tr>
-						<Th>Total</Th>
-						<Th>xxx</Th>
-					</Tr>
-				</Tfoot>
 			</Table>
 		</TableContainer>
 </div>)

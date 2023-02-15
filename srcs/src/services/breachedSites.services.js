@@ -1,26 +1,25 @@
 import axios from "axios"
-import { getBreached } from "../pages/api/breachedsites.js"
-/*
-export const parseBreachedJson = async() => {
 
-	const breachedJson = await getBreached()
+export async function getBreached() {
+	const result = await fetch('https://haveibeenpwned.com/api/v3/breaches');
+	const data = await result.json()
+	const reducedData = await reduceBreachedResults(data)
+	return reducedData
+}
+
+export async function reduceBreachedResults(data)
+{
 	let breachedReduced = []
-	let breachedSite;
-	for (let i = 0; i < 10; i++)
+	for (let i = 0; i < data.length; i++)
 	{
 		breachedReduced.push ( { 
-			name : breachedJson[i].Name, 
-			breachdate: breachedJson[i].BreachDate, 
-			pwncount: breachedJson[i].PwnCount
+			name : data[i].Name, 
+			breachdate: data[i].BreachDate, 
+			pwncount: data[i].PwnCount,
+			breachyear: data[i].BreachDate.substr(0,4),
+			dataclasses: data[i].DataClasses
 		} )
 	}
 	return breachedReduced
 }
 
-export const getBreachedSites = async() => {
-
-	const breachedSites = await parseBreachedJson()
-	return (breachedSites)
-
-}
-*/

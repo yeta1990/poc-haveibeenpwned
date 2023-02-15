@@ -1,4 +1,4 @@
-import { getBreached } from "../pages/api/breachedsites.js"
+import { getBreached } from '@/services/breachedSites.services'
 
 function countElementsOfSite(items, classes)
 {
@@ -16,17 +16,24 @@ function sumOneElement(items, name)
 	}
 }
 
-export async function generateDataForTable(dataset)
+export async function getBreachedDataType()
 {
 	const breachedData = await getBreached()
 	const dataCDS = await fetch(`https://haveibeenpwned.com/api/v3/dataclasses`)
 	const dataClassesDataSet = await dataCDS.json()
-	const dataClassesTableElements = []
+	const dataClassesElements = []
 
-	dataClassesDataSet.map((item) => dataClassesTableElements.push({name: item,  times: 0}) )
-	breachedData.map((site) => countElementsOfSite(dataClassesTableElements, site.dataclasses))
-	dataClassesTableElements.sort((a, b) => a.times < b.times ? 1 : -1);
-//	console.log(breachedData)
-//	console.log(a)
-	return (dataClassesTableElements.slice(0,10))
+	dataClassesDataSet.map((item) => dataClassesElements.push({name: item,  times: 0}) )
+	breachedData.map((site) => countElementsOfSite(dataClassesElements, site.dataclasses))
+	dataClassesElements.sort((a, b) => a.times < b.times ? 1 : -1);
+	return (dataClassesElements)
 }
+
+export async function getBreachedDataTypeTop(top)
+{
+	const dataClassesElements = await getBreachedDataType()
+	return (dataClassesElements.slice(0,top))
+}
+
+
+

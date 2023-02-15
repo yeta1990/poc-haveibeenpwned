@@ -5,8 +5,8 @@ export default function BoxCharts (props)
 	return (
 		<Box 
 			mt={50}
-			width={[400,600]}
-			height="600px"
+			width={[200, 400, 600]}
+			height="500px"
 			borderWidth={1}
 			rounded="md"
         	boxShadow="dark-lg"

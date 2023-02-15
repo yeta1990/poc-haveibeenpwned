@@ -1,6 +1,6 @@
-import { getBreached } from "./api/breachedsites.js"
+import { getBreached } from "@/services/breachedSites.services"
+import { getBreachedDataTypeTop } from "@/services/tables.services.js"
 import { generateDataForLineChart } from "@/services/charts.services.js"
-import { generateDataForTable } from "@/services/tables.services.js"
 import { BreachedSitesLines } from '@/components/BreachedSitesLines'
 import  DataTable  from '@/components/DataTable'
 import  BoxCharts from '@/components/BoxCharts'
@@ -53,8 +53,8 @@ export default function Charts( { breachedDataSet, dataClassesDataSet} ) {
 export async function getServerSideProps() {
 	const data = await getBreached()
 	const breachedDataSet = await generateDataForLineChart(data, "branchyear", "# of breached sites by year")
-	
-	const dataClassesDataSet = await generateDataForTable()
+
+	const dataClassesDataSet = await getBreachedDataTypeTop(10)
 	return { props: { breachedDataSet , dataClassesDataSet} }
 }
 
