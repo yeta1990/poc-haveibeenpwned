@@ -7,14 +7,6 @@ import { Box } from '@chakra-ui/react'
 export function BreachedSitesLines({ dataset }) {
 	return (
 		<div>
-		<Box 
-			mt={50}
-			ml={10}
-			width="600px"
-			borderWidth={1}
-			rounded="md"
-        	boxShadow="dark-lg"
-		>
 		<Line
 			data={dataset}
 			width={300}
@@ -40,8 +32,6 @@ export function BreachedSitesLines({ dataset }) {
 			    }
 			}}
 		/>	
-		</Box>
-
 		</div>
 	)
 }
