@@ -50,6 +50,11 @@ All components have been created to be as reusable as possible to ease the appli
 
 
 ## Contact
+
 Alberto García (@albgarci)
+
 albertogarcia90@gmail.com
+
 617 013 946
+
+https://www.linkedin.com/in/alberto-garc%C3%ADa/
