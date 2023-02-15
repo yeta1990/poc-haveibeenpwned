@@ -18,6 +18,7 @@ Built on [Next.js](https://nextjs.org/docs/getting-started), with [Chakra UI](ht
 -   `make up`: start container
 -   `make build`: build docker image
 -   `make down`: stop container
+-   `make clean`: remove /node_modules && /.next folders
 -   `make fclean`: purge all docker cache from the computer
 -   `make logs`: print logs from the next.js server
 
