@@ -16,7 +16,8 @@ export async function reduceBreachedResults(data)
 			name : data[i].Name, 
 			breachdate: data[i].BreachDate, 
 			pwncount: data[i].PwnCount,
-			breachyear: data[i].BreachDate.substr(0,4)
+			breachyear: data[i].BreachDate.substr(0,4),
+			dataclasses: data[i].DataClasses
 		} )
 	}
 	return breachedReduced

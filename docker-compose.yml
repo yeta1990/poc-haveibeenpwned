@@ -13,7 +13,6 @@ services:
         volumes:
             - srcs:/usr/src/app
             - /usr/src/app/node_modules
-              #        working_dir: /usr/src/app
         tty: true
 
 volumes:

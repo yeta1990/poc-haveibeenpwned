@@ -1,6 +1,6 @@
 import axios from "axios"
 import { getBreached } from "../pages/api/breachedsites.js"
-
+/*
 export const parseBreachedJson = async() => {
 
 	const breachedJson = await getBreached()
@@ -23,3 +23,4 @@ export const getBreachedSites = async() => {
 	return (breachedSites)
 
 }
+*/

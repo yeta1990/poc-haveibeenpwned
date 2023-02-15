@@ -4,8 +4,8 @@ export default function DataTable1( { dataset }) {
 	const types = dataset.map((item) => 
 		
 		   <Tr>
-	 	    <Td>{item}</Td>
-		     <Td>millimetres</Td>
+	 	    <Td>{item.name}</Td>
+	 	    <Td>{item.times}</Td>
 		    </Tr>
 		)
 
@@ -28,15 +28,15 @@ export default function DataTable1( { dataset }) {
 		   </Thead>
 		   <Tbody>
 				{types}
-		     <Tr>
-	 	       <Td>inches</Td>
-		       <Td>millimetres</Td>
+		      <Tr>
+		        <Td>Total top 10 </Td>
+		        <Td>xxx</Td>
 		      </Tr>
 		    </Tbody>
 		    <Tfoot>
 		      <Tr>
-		        <Th>To convert</Th>
-		        <Th>into</Th>
+		        <Th>Total</Th>
+		        <Th>xxx</Th>
 		      </Tr>
 		    </Tfoot>
 		  </Table>
