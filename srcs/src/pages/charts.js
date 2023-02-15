@@ -4,21 +4,47 @@ import { generateDataForTable } from "@/services/tables.services.js"
 import { BreachedSitesLines } from '@/components/BreachedSitesLines'
 import  DataTable  from '@/components/DataTable'
 import  BoxCharts from '@/components/BoxCharts'
-import { Box, Heading } from '@chakra-ui/react'
+import { Box, Heading, Flex, Link, Wrap, WrapItem } from '@chakra-ui/react'
 
 export default function Charts( { breachedDataSet, dataClassesDataSet} ) {
 
 	return (
 		<div>
-			<Box textAlign="center">
+			<Box textAlign="center" mt={20}>
 				<Heading>Charts</Heading>
 			</Box>
-			<BoxCharts>
-				<BreachedSitesLines dataset={breachedDataSet} />
-			</BoxCharts>
-			<BoxCharts>
-				<DataTable dataset={dataClassesDataSet}/>
-			</BoxCharts>
+			<Wrap spacing='30px' justify='center'>
+				<WrapItem>
+					<BoxCharts>
+						<Box m={6}>
+							<Heading size='md' >
+							Number of breached sites
+							</Heading>
+							<Box mt={2} mb={2}>
+								Year by year, reported by <Link href='https://haveibeenpwned.com/' isExternal>haveibeenpwned</Link>
+							</Box>
+						<Box mt={10}>
+							<BreachedSitesLines dataset={breachedDataSet} />
+						</Box>
+						</Box>
+					</BoxCharts>
+				</WrapItem>
+				<WrapItem>
+					<BoxCharts>
+						<Box mt={6} ml={12}>
+							<Heading size='md' >
+								Top 10 type of data leaked from breached sites
+							</Heading>
+							<Box mt={2} mb={2}>
+								Total since 2007, reported by <Link href='https://haveibeenpwned.com/' isExternal>haveibeenpwned</Link>
+							</Box>
+						</Box>
+						<Box m={6}>
+							<DataTable dataset={dataClassesDataSet}/>
+						</Box>
+					</BoxCharts>
+				</WrapItem>
+			</Wrap>
 		</div>
 	)
 }
