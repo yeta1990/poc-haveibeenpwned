@@ -1,6 +1,6 @@
 ![demo_albgarci](https://user-images.githubusercontent.com/65416560/219085805-7b42c8c6-2b11-45d8-a15a-07bd60e971d7.gif)
 
-## Tech test for fullstack/frontend position in telefonica from @albgarci
+## Proof of concept with the Haveibeenpwned API 
 
 Built on [Next.js](https://nextjs.org/docs/getting-started), with [Chakra UI](https://chakra-ui.com/getting-started) and Chart.js [Chart.js](https://www.chartjs.org/docs/latest/), embedded in a Docker container
 
