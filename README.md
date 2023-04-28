@@ -52,14 +52,3 @@ All components have been created to be as reusable as possible to ease the appli
 | http://localhost:3000/api/breachedsites                                        | http://localhost:3000/api/breachedsites                                                 | Simplified version of https://haveibeenpwned.com/api/v3/breaches with the minimum data needed to build the charts                                                                                                                                                                               |
 | http://localhost:3000/api/exposed?hash= {5 first letter of SHA-1 encoded pass} | http://localhost:3000/api/exposed?hash=2BD11                                            | JSON formatted version of  https://api.pwnedpasswords.com/range/2BD11                                                                                                                                                                                                                           |
 | http://localhost:3000/api/breachedtypes                                        | http://localhost:3000/api/breachedtypes  http://localhost:3000/api/breachedtypes?top=10 | Count of data types leaked in breached sites, sorted descending, and with option to filter top N. All data types are from:  https://haveibeenpwned.com/api/v3/dataclasses , the hacked sites are taken from  https://haveibeenpwned.com/api/v3/breaches , and this endpoint is the join of both |
-
-
-## Contact
-
-Alberto García (@albgarci)
-
-albertogarcia90@gmail.com
-
-617 013 946
-
-https://www.linkedin.com/in/alberto-garc%C3%ADa/
