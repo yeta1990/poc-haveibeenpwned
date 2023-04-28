@@ -4,6 +4,8 @@
 
 Built on [Next.js](https://nextjs.org/docs/getting-started), with [Chakra UI](https://chakra-ui.com/getting-started) and Chart.js [Chart.js](https://www.chartjs.org/docs/latest/), embedded in a Docker container
 
+## Live demo
+![https://poc-haveibeenpwned.vercel.app/](https://poc-haveibeenpwned.vercel.app/)
 
 ## Instructions:
 
